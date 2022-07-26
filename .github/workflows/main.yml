@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run Tests
         run: |
-          echo "secret_body=sampletest" >> $GITHUB_ENV
+          echo "secret_body=sampletestssssss" >> $GITHUB_ENV
           echo "secret_body=$secret_body"
       - name: gh auth login
         shell: bash
