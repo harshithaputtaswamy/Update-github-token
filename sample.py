@@ -1,3 +1,3 @@
 # init
 
-# "branch update"
+# "branch updates"
