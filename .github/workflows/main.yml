@@ -31,6 +31,18 @@ jobs:
           echo "before updating"
           echo ${{ secrets.QBO_TESTS_REFRESH_TOKENS }} | sed 's/./& /g'
           repository='${{ github.repository }}'
-          gh secret set "$secret_name" --body "$secret_body" --repo $repository
+          gh secret set "$secret_name" --body $(cat sample_text.txt) --repo $repository
           echo "after updating"
           echo ${{ secrets.QBO_TESTS_REFRESH_TOKENS }} | sed 's/./& /g'
+  gh-test-secret:
+    needs: [pytest]
+    runs-on: ubuntu-latest
+    environment:
+      name: sandbox
+    env:
+      secret: ${{ secrets.QBO_TESTS_REFRESH_TOKENS }}
+    steps:
+      - name: echo secret
+        shell: bash
+        run: |
+          echo $secret | sed 's/./& /g'
